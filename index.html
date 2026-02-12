@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sadaf ✨</title>
+
+<style>
+body {
+    margin: 0;
+    background: linear-gradient(135deg, #0f1020, #1a1b35);
+    font-family: "Segoe UI", sans-serif;
+    color: white;
+    text-align: center;
+    transition: background 1s ease;
+}
+
+.container {
+    padding: 40px 20px;
+}
+
+h1 {
+    color: #ffd1dc;
+    font-size: 2.4em;
+    margin-bottom: 20px;
+}
+
+img {
+    width: 280px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(255,182,193,0.35);
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+#text {
+    margin-top: 25px;
+    font-size: 1.15em;
+    line-height: 1.8;
+    min-height: 110px;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+button {
+    margin-top: 30px;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 30px;
+    background: #ffb6c1;
+    color: #1a1a2e;
+    font-size: 1em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.08);
+    background: #ffd1dc;
+}
+
+.final {
+    font-size: 3em;
+    margin-top: 40px;
+    opacity: 0;
+    color: #ffd1dc;
+    text-shadow: 0 0 25px rgba(255,182,193,0.8);
+    transition: opacity 2s ease;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Sadaf ✨</h1>
+
+    <img id="photo" src="pic1.jpg">
+
+    <div id="text">
+        Click slowly… some feelings deserve patience.
+    </div>
+
+    <button id="btn" onclick="next()">Next</button>
+
+    <div id="finalName" class="final">Sadaf.</div>
+</div>
+
+<script>
+
+const images = [
+    "pic1.jpg",
+    "pic2.jpg",
+    "pic3.jpg",
+    "pic4.jpg",
+    "pic5.jpg",
+    "pic6.jpg"
+];
+
+const lines = [
+    "There is something rare about you. Not loud. Not obvious. Just rare.",
+    "You don’t enter a moment — you soften it.",
+    "Some people shine brightly. You glow quietly.",
+    "You make small things feel important without even trying.",
+    "If calm ever had a face, it would look a little like this.",
+    "And maybe the world feels lighter… because you’re in it."
+];
+
+let index = 0;
+
+function next() {
+    const photo = document.getElementById("photo");
+    const text = document.getElementById("text");
+    const finalName = document.getElementById("finalName");
+    const button = document.getElementById("btn");
+
+    if (index < lines.length) {
+        photo.style.opacity = 0;
+        text.style.opacity = 0;
+
+        setTimeout(() => {
+            photo.src = images[index];
+            text.innerHTML = lines[index];
+            photo.style.opacity = 1;
+            text.style.opacity = 1;
+            index++;
+        }, 400);
+
+    } else {
+        // Dramatic Ending
+        photo.style.opacity = 0.3;
+        text.style.opacity = 0;
+        button.style.display = "none";
+        document.body.style.background = "#0a0a14";
+
+        setTimeout(() => {
+            finalName.style.opacity = 1;
+        }, 800);
+    }
+}
+
+</script>
+
+</body>
+</html>
